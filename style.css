@@ -1,0 +1,82 @@
+/*Template*/
+/*
+    Global classes
+*/
+button, button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* typography class*/
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-times {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.font-times2 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-18 {
+  font-size: 18px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+  color: #FFD289;
+}
+
+.font-size-22 {
+  font-size: 22px;
+}
+
+.color-primary {
+  color: #003859;
+}
+
+.color-primary-bg {
+  background-color: #003859;
+}
+
+.color-secondary {
+  color: #00A5C4;
+}
+
+.color-secondary-bg {
+  background-color: #00A5C4;
+}
+
+.color-tertiary {
+  color: #FFD289;
+}
+
+.color-tertiary-bg {
+  background-color: #FFD289;
+}
+
+#products .grid .grid-item {
+  margin-right: 1.2rem;
+  margin-top: 1rem;
+}
+
+.productimg {
+  height: 100px;
+  width: 100px;
+}
+
+/*# sourceMappingURL=style.css.map */

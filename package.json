@@ -1,0 +1,23 @@
+{
+  "name": "webshop",
+  "version": "1.0.0",
+  "description": "Webshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass sass/style.scss style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FejsalP/Project_6_Webshop.git"
+  },
+  "author": "Fejsal Perva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FejsalP/Project_6_Webshop/issues"
+  },
+  "homepage": "https://github.com/FejsalP/Project_6_Webshop#readme",
+  "dependencies": {
+    "sass": "^1.30.0"
+  }
+}
