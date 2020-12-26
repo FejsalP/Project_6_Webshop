@@ -1,16 +1,39 @@
 <section id="footer" class="py-3 container bg bg-primary">
     <div class="row">
         <div class="col-4">
-            <h3>Information</h3>
-            <ul>
+            <ul style="list-style-type:none;">
+                <li>
+                    <h5>Information</h5>
+                </li>
                 <li>Contact us</li>
                 <li>About us</li>
                 <li>Shipping information</li>
                 <li>Terms and conditions</li>
             </ul>
         </div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
+        <div class="col-4">
+            <ul style="list-style-type:none;">
+                <li>Navigate </li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <h5>
+                    Subscribe to our newslater
+                </h5>
+                <form action="subscribe.php" method="post">
+                    <input type="email" name="email" id="email" placeholder="Enter your email here..."
+                        class="form-control">
+                </form>
+            </div>
+            <div class="row text-center container">
+                <img class="img-fluid" src="images/facebook.png" alt="Facebook" srcset="">
+                <img class="img-fluid" src="images/instagram.png" alt="Instagram" srcset="">
+            </div>
+        </div>
     </div>
 </section>
 
