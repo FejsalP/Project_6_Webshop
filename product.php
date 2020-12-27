@@ -3,7 +3,7 @@
 ?>
 
 
-<section class="container py-3">
+<section class="container pt-5 my-5">
     <div class="row">
         <div class="col-sm-5 pb-5">
             <div>
@@ -47,9 +47,15 @@
                     <div class="quantity d-flex">
                         <h5>Quantity: </h5>
                         <div class="px-4 d-flex">
-                            <input type="text" disabled class="px-1 w-50 border bg-light quantity_input">
-                            <button class="qty-up border bg-light">+</button>
-                            <button class="qty-up border bg-light">-</button>
+                            <div class="quantity d-flex">
+                                <h5>Quantity: </h5>
+                                <div class="px-4 d-flex">
+                                    <input type="text" value="1" disabled data-id="product1"
+                                        class="px-1 w-50 border bg-light quantity-input">
+                                    <button data-id="product1" class="quantity-up border bg-light">+</button>
+                                    <button data-id="product1" class="quantity-down border bg-light">-</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,9 +89,20 @@
                     </div>
                 </div>
             </div>
+            <hr>
+
         </div>
+        <hr>
+
     </div>
+    <hr>
+
 </section>
+
+<?php
+include_once 'featured.php'
+?>
+
 <?php
     include_once 'header_footer/footer.php';
 ?>

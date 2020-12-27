@@ -1,40 +1,42 @@
-<section id="footer" class="py-3 container bg bg-primary">
-    <div class="row">
-        <div class="col-4">
-            <ul style="list-style-type:none;">
-                <li>
-                    <h5>Information</h5>
-                </li>
-                <li>Contact us</li>
-                <li>About us</li>
-                <li>Shipping information</li>
-                <li>Terms and conditions</li>
-            </ul>
-        </div>
-        <div class="col-4">
-            <ul style="list-style-type:none;">
-                <li>Navigate </li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <h5>
-                    Subscribe to our newslater
-                </h5>
-                <form action="subscribe.php" method="post">
-                    <input type="email" name="email" id="email" placeholder="Enter your email here..."
-                        class="form-control">
-                </form>
+<section id="footer" class="py-5 my-5 bg bg-primary">
+    <div class="container border-left border-right">
+        <div class="row">
+            <div class="col-4">
+                <ul style="list-style-type:none;">
+                    <li>
+                        <h5>Information</h5>
+                    </li>
+                    <li>Contact us</li>
+                    <li>About us</li>
+                    <li>Shipping information</li>
+                    <li>Terms and conditions</li>
+                </ul>
             </div>
-            <div class="row text-center container">
-                <img class="img-fluid" src="images/facebook.png" alt="Facebook" srcset="">
-                <img class="img-fluid" src="images/instagram.png" alt="Instagram" srcset="">
+            <div class="col-5">
+                <h5 class=text-center">
+                    You can find us on the following social networks
+                </h5>
+                <div class="text-center container">
+                    <img class="img-fluid" style="height: 70px; width: 70px;" src="images/facebook.png" alt="Facebook"
+                        srcset="">
+                    <img class="img-fluid" style="height: 70px; width: 70px;" src="images/instagram.png" </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <h5 class="text-center">
+                        Subscribe to our newslater
+                    </h5>
+                    <form action="subscribe.php" method="post">
+                        <input type="email" name="email" id="email" placeholder="Enter your email here..."
+                            class="form-control">
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
+
 </section>
 
 

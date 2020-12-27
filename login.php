@@ -2,7 +2,7 @@
     include_once 'header_footer/header.php'
 ?>
 
-<section class="signup-form">
+<section class="signup-form py-5">
 
     <div class="container mt-5 text-center ">
         <h2>
@@ -46,6 +46,10 @@
     </div>
 
 </section>
+<div class="mb-5 pb-5"></div>
+<div class="mb-5 pb-5"></div>
+<div class="mb-5 pb-3"></div>
+<div class="mb-5 pb-3"></div>
 
 
 <?php

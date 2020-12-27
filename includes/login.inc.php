@@ -6,7 +6,6 @@ if (isset ($_POST["submit"])){
     $password = $_POST["password"];
     
 
-    require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
     
     if (emptyInputLogin($username, $password) !== false){
@@ -14,7 +13,7 @@ if (isset ($_POST["submit"])){
         exit();
     }
 
-    loginUser($conn, $username, $password);
+    loginUser($db->conn, $username, $password);
 }
 
 else {

@@ -1,16 +1,15 @@
 <?php
 
-echo 'AA';
 if (isset($_POST["submit"])){
-    echo 'AAA';
     $name = $_POST['name'];
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $password_repeat = $_POST['passwordRepeat'];
 
-    require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
+        echo 'AAA';
+
     if (emptyInputSignup($name, $email, $username, $password, $password_repeat) !== false){
         header("location: ../signup.php?error=emptyinput");
         exit();
@@ -30,12 +29,12 @@ if (isset($_POST["submit"])){
         exit();
     }
 
-    if(usernameOrEmailExists($conn, $username, $email) !==false){
+    if(usernameOrEmailExists($db->conn, $username, $email) !==false){
         header("location: ../signup.php?error=usernametaken");
         exit();
     }
     
-    createUser($conn, $name, $email, $username, $password);
+    createUser($db->conn, $name, $email, $username, $password);
 
 
 }

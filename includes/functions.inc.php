@@ -1,4 +1,8 @@
 <?php 
+require('dbh.inc.php');
+require('Product.php');
+$db = new DBController();
+$product = new Product($db);
 function emptyInputSignup($name, $email, $username, $password, $password_repeat){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($password) || empty($password_repeat)){
@@ -64,7 +68,6 @@ function usernameOrEmailExists ($conn, $username, $email){
 }
 function createUser ($conn, $name, $email, $username, $password){
     $sql = "INSERT INTO users (userName, userEmail, userUsername, userPassword) VALUES (?, ?, ?, ?);";
-    echo $sql;
     $statement = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement, $sql)){
         header("location: ../signup.php?error=statementfailed");

@@ -5,9 +5,9 @@
 <section class="signup-form">
 
 
-    <div class="container mt-5 text-center ">
+    <div class="container mt-5 pt-5 text-center ">
         <h2>
-            Sign UP
+            Sign Up
         </h2>
         <?php
     if (isset($_GET["error"])){
@@ -87,7 +87,9 @@
     </div>
 
 </section>
-
+<div class="mb-5 pb-5"></div>
+<div class="mb-5 pb-5"></div>
+<div class="mb-5 pb-3"></div>
 
 
 
