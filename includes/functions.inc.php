@@ -1,8 +1,15 @@
 <?php 
 require('dbh.inc.php');
 require('Product.php');
+require('ShoppingCart.php');
+
 $db = new DBController();
 $product = new Product($db);
+$shoppingCart = new ShoppingCart($db);
+$all_products = $product->getData();
+print_r($shoppingCart->getCartID($product->getData('cart')));
+
+
 function emptyInputSignup($name, $email, $username, $password, $password_repeat){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($password) || empty($password_repeat)){

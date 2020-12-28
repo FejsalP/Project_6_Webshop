@@ -1,5 +1,7 @@
 <?php
     session_start();
+        ob_start();
+
 ?>
 <!DOCTYPE html>
 
@@ -26,7 +28,8 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="./style.css" class="rel">
     <?php
-require('includes/functions.inc.php');
+require('includes\functions.inc.php');
+    $products = $product->getData();
     ?>
 </head>
 
@@ -50,12 +53,14 @@ require('includes/functions.inc.php');
                     </li>
                     <?php
                         if(isset($_SESSION["userID"])){
-                            echo '<li class="nav-item px-2"><a class="nav-link" href="includes/logout.inc.php">Sign out</a></li>';
-                        }
-                        else {
-                            echo '<li class="nav-item px-2"><a class="nav-link" href="signup.php">Sign Up</a></li>';
-                            echo '<li class="nav-item px-2"><a class="nav-link" href="login.php">Login</a> </li>';
-                        }
+                            echo '<li class="nav-item px-2"><a class="nav-link" href="shopping_cart.php">Shopping cart <span>' . count($product->getData('cart')) . '</span></a></li>';
+                    echo '<li class="nav-item px-2"><a class="nav-link" href="includes/logout.inc.php">Sign out</a></li>
+                    ';
+                    }
+                    else {
+                    echo '<li class="nav-item px-2"><a class="nav-link" href="signup.php">Sign Up</a></li>';
+                    echo '<li class="nav-item px-2"><a class="nav-link" href="login.php">Login</a> </li>';
+                    }
                     ?>
 
 

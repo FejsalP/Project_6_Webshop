@@ -1,19 +1,27 @@
 <?php
     include_once 'header_footer/header.php';
+    $productID = $_GET['productID'] ?? 1;
+    //$all_products = $product->getData();
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        if(isset($_POST['product_desc'])){
+                    $shoppingCart->addToShoppingCart($_POST['userID'], $_POST['productID']);
+    }}
+    foreach($all_products as $item){
+        if($item['productID']==$productID){
 ?>
-
 
 <section class="container pt-5 my-5">
     <div class="row">
         <div class="col-sm-5 pb-5">
             <div>
-                <img class="img-fluid" src="images/tshirtA.jpg" alt="Product" srcset="">
+                <img class="img-fluid" src="<?php echo $item['productImage']??'images/jacketA.jpg';?>" alt="Product"
+                    srcset="">
 
             </div>
         </div>
         <div class="col-sm-7 pt-5 text-center justify-content">
             <h4 class="font-size-22">
-                Product name
+                <?php echo $item['productName'] ?? 'Jacket A';?>
             </h4>
             <p class="font-size-16 text-justify">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque sunt unde praesentium hic nesciunt quia
@@ -25,7 +33,7 @@
             <div class="row">
                 <div class="col">
                     <h4>
-                        Price: <span>50KM</spam>
+                        Price: <span><?php echo $item['productPrice'] ?? '50';?></spam> KM
                     </h4>
                 </div>
             </div>
@@ -84,9 +92,20 @@
                 </div>
 
                 <div class="col-6">
-                    <div class="form-row px-5 font-size-14 text-center">
-                        <button class="btn btn-warning form-control">Add to cart
-                    </div>
+                    <form method="post">
+                        <input type="hidden" name="productID" value="<?php echo $item['productID']??'1';?>">
+                        <input type="hidden" name="userID" value="<?php echo 1;?>">
+
+
+                        <?php 
+                        if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
+                            echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Already in the cart</button>';
+                        }
+                        else{
+                            echo '<button type="submit" name="product_desc" class="btn btn-primary mb-3">Add toaa cart</button>';
+                        }   
+                    ?>
+                    </form>
                 </div>
             </div>
             <hr>
@@ -98,10 +117,15 @@
     <hr>
 
 </section>
-
 <?php
-include_once 'featured.php'
+        }}
 ?>
+<?php
+?>
+<?php include_once 'featured.php';?>
+
+
+
 
 <?php
     include_once 'header_footer/footer.php';

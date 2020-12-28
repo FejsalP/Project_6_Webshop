@@ -11,7 +11,7 @@ class Product{
     }
 
     public function getData ($table="products"){
-        $result = $this->db->conn->query("SELECT * FROM ($table);");
+        $result = $this->db->conn->query("SELECT * FROM {$table};");
 
         $resultArray = array();
 
@@ -19,5 +19,17 @@ class Product{
             $resultArray [] = $item;   
         }
         return $resultArray;
+    }
+
+    public function getProduct($productID=null, $table="products"){
+        if(isset($productID)){
+            $result = $this->db->conn->query("SELECT * FROM {$table} WHERE productID={$productID};");
+            $resultArray = array();
+
+            while($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $resultArray [] = $item;   
+            }
+            return $resultArray;
+        }
     }
 }

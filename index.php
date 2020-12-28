@@ -1,8 +1,6 @@
 <?php
-    include_once 'header_footer/header.php'
-?>
-
-<?php
+    include_once 'header_footer/header.php';
+    //include_once 'includes/product.php';
      if(isset($_SESSION["userID"])){
             echo '<p>Hello there :)</p>';
     }
@@ -28,11 +26,11 @@
         quas voluptatum rerum quasi porro amet eius mollitia molestiae totam ut ipsa cum?
     </p>
 </div>
-
-
 <?php
-include_once 'featured.php';
+    include_once 'featured.php';
 ?>
+
+
 
 <div class="text-center container py-5">
     <h4>

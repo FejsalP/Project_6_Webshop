@@ -6,6 +6,12 @@
          return $product['productBrand'];},$all_products);
     $unique_brands = array_unique($brands);
     sort($unique_brands);
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        if(isset($_POST['products_all'])){
+            $shoppingCart->addToShoppingCart($_POST['userID'], $_POST['productID']);
+        }
+}
 ?>
 
 <h2 class="pt-5 text-center">
@@ -32,21 +38,34 @@
             <button class="btn" data-sort-value="price">Price: Descending</button>
         </div>
         <div class="grid">
-            <?php foreach($all_products as $product) {
+            <?php foreach($products as $item) {
                 ?>
-            <div class="grid-item Brand<?php echo $product['productBrand']?? 'A';?> border">
+            <div class="grid-item Brand<?php echo $item['productBrand']?? 'A';?> border">
                 <div class="item py-2" style="width:200px">
                     <div class="product">
-                        <a href="#"><img class="img-fluid" class="productimg"
-                                src="<?php echo $product['productImage']??images/jacketA.jpg;?>"
-                                alt=<?php echo $product['productName']??'Jacket A';?> srcset=""></a>
+                        <a href="<?php printf('product_info.php?productID=%s', $item['productID']); ?>"><img
+                                class="img-fluid" class="productimg"
+                                src="<?php echo $item['productImage']??images/jacketA.jpg;?>"
+                                alt=<?php echo $item['productName']??'Jacket A';?> srcset=""></a>
                         <div class="text-center">
-                            <h5><?php echo $product['productName']??'Jacket A';?></h5>
+                            <h5><?php echo $item['productName']??'Jacket A';?></h5>
 
                             <div class="price">
-                                <?php echo $product['productPrce']??'50';?>KM
+                                <?php echo $item['productPrice']??'50';?>KM
                             </div>
-                            <button type="submit" class="btn btn-primary">Add to cart</button>
+                            <form method="post">
+                                <input type="hidden" name="productID" value="<?php echo $item['productID']??'1';?>">
+                                <input type="hidden" name="userID" value="<?php echo 1;?>">
+
+                                <?php 
+                                if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
+                                    echo '<button type="submit" disabled name="products_all" class="btn btn-danger mb-3 disabled">Add to cart</button>';
+                                }
+                                else{
+                                    echo '<button type="submit" name="products_all" class="btn btn-primary mb-3">Add to cart</button>';
+                                }   
+                                ?>
+                            </form>
                         </div>
                     </div>
                 </div>
