@@ -79,15 +79,7 @@ button, button:focus {
   width: 100px;
 }
 /*  top sale template   */
-#featured .owl-carousel .item .product a {
-    overflow: hidden;
-}
-#featured .owl-carousel .item .product img {
-    transition: transform 0.5s ease;
-}
-#featured .owl-carousel .item .product img:hover {
-    transform: scale(1.1);
-}
+
 #footer {
     position: fixed;
     height: 50px;

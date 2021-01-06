@@ -36,10 +36,12 @@ include_once 'header_footer/header.php';
                         <h5><?php echo $item['productName'] ?? 'Jacket A'; ?></h5>
                         <div class="quantity d-flex pt-3">
                             <div class="d-flex w-25">
-                                <input type="text" data-id="product1" value="1" disabled
+                                <input type="text" data-id="<?php echo $item['productID']??'0'; ?>" value="1" disabled
                                     class="px-1 w-50 border bg-light quantity-input">
-                                <button data-id="product1" class="quantity-up border bg-light">+</button>
-                                <button data-id="product1" class="quantity-down border bg-light">-</button>
+                                <button data-id="<?php echo $item['productID']??'0'; ?>"
+                                    class="quantity-up border bg-light">+</button>
+                                <button data-id="<?php echo $item['productID']??'0'; ?>"
+                                    class="quantity-down border bg-light">-</button>
 
                             </div>
                             <form method="post">
@@ -52,7 +54,8 @@ include_once 'header_footer/header.php';
                     </div>
                     <div class="col-sm-1">
                         <div class="font-size-20 text-danger">
-                            <span class="price"><?php echo $item['productPrice'] ?? '50';?></span> KM
+                            <span data-id="<?php echo $item['productID']??'0'; ?>"
+                                class="price"><?php echo $item['productPrice'] ?? '50';?></span> KM
                         </div>
                     </div>
 

@@ -102,7 +102,7 @@
                             echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Already in the cart</button>';
                         }
                         else{
-                            echo '<button type="submit" name="product_desc" class="btn btn-primary mb-3">Add toaa cart</button>';
+                            echo '<button type="submit" name="product_desc" class="btn btn-primary mb-3">Add to cart</button>';
                         }   
                     ?>
                     </form>

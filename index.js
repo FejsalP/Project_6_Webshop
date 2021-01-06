@@ -1,28 +1,4 @@
 $(document).ready(function(){
-    //banner part
-    $(".owl-carousel").owlCarousel({
-        dots: true,
-        items: 1,
-        autoHeight: true
-    })
-    //featured
-    $("#featured").owlCarousel({
-        loop: true,
-        nav: true,
-        dots: false,
-        autoHeight: true,
-        responsive : {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000 : {
-                items: 5
-            }
-        }
-    });
     // isotope
     var $grid = $(".grid").isotope({ 
         itemSelector: '.grid-item',
@@ -51,24 +27,50 @@ $(document).ready(function(){
 
 
 
-  //increase and decrease number of items added in product.php
+  //increase and decrease number of items added in product_info and cart
 
 
 
-  $('.quantity .quantity-up').click(function(){
-      var $input = $(`.quantity-input[data-id='${$(this).data("id")}']`);
-        if($input.val() >= 1 && $input.val() < 20){
+  $('.quantity-up').click(function(){
+    var $input = $(`.quantity-input[data-id='${$(this).data("id")}']`);
+    var $price = $(`.price[data-id='${$(this).data("id")}']`);
+    $.ajax({url: "includes/ajax.php", type : 'post', data : { productID : $(this).data("id")}, success:function(result){  
+        result = result.slice(7)
+        var obj = JSON.parse(result);
+        var productPrice = obj[0]['productPrice'];
+        if($input.val() >= 1 && $input.val() <= 19){
             $input.val(function(i, oldval){
                 return ++oldval;
-            });
-        }
+        });
+        $price.text(parseInt(productPrice * $input.val()).toFixed(2));
+        var subtotal = parseInt($("#total_price").text())+parseInt(productPrice);    
+        $("#total_price").text(subtotal)
+    }
+
+    }}); // closing ajax request
+    
+        
   })
-   $('.quantity .quantity-down').click(function(){
-      var $input = $(`.quantity-input[data-id='${$(this).data("id")}']`);
+   $('.quantity-down').click(function(){
+    var $input = $(`.quantity-input[data-id='${$(this).data("id")}']`);
+    var $price = $(`.price[data-id='${$(this).data("id")}']`);
+
+    $.ajax({url: "includes/ajax.php", type : 'post', data : { productID : $(this).data("id")}, success:function(result){  
+        result = result.slice(7)
+        var obj = JSON.parse(result);
+        var productPrice = obj[0]['productPrice'];
         if($input.val() > 1 && $input.val() <= 20){
             $input.val(function(i, oldval){
                 return --oldval;
-            });
-        }
+        });
+        $price.text(parseInt(productPrice * $input.val()).toFixed(2));
+        var subtotal = parseInt($("#total_price").text())-parseInt(productPrice);    
+        $("#total_price").text(subtotal)
+    }
+
+    }}); // closing ajax request
+    
+         
+        
   })
 });
