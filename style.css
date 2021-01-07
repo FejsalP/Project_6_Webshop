@@ -87,7 +87,13 @@ button, button:focus {
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
-}body {
-    margin-bottom:50px;
 }
+.card-img-top {
+    max-height: 20vh; /*not want to take all vertical space*/
+    object-fit: contain;/*show all image, autosized, no cut, in available space*/
+}
+#test {
+  height: 200px;
+}
+
 /*# sourceMappingURL=style.css.map */

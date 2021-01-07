@@ -53,7 +53,6 @@
                 </div>
                 <div class="col-8">
                     <div class="quantity d-flex">
-                        <h5>Quantity: </h5>
                         <div class="px-4 d-flex">
                             <div class="quantity d-flex">
                                 <h5>Quantity: </h5>
@@ -98,13 +97,16 @@
 
 
                         <?php 
-                        if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
-                            echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Already in the cart</button>';
+                        if(isset($_SESSION["userID"])){
+                            if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
+                                echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Add to cart</button>';
+                            }
+                            else{
+                                echo '<button type="submit" name="product_featured" class="btn btn-primary mb-3">Add to cart</button>';
+                            }   
                         }
-                        else{
-                            echo '<button type="submit" name="product_desc" class="btn btn-primary mb-3">Add to cart</button>';
-                        }   
-                    ?>
+                        
+                        ?>
                     </form>
                 </div>
             </div>

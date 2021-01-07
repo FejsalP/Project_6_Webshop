@@ -8,7 +8,6 @@ if (isset($_POST["submit"])){
     $password_repeat = $_POST['passwordRepeat'];
 
     require_once 'functions.inc.php';
-        echo 'AAA';
 
     if (emptyInputSignup($name, $email, $username, $password, $password_repeat) !== false){
         header("location: ../signup.php?error=emptyinput");

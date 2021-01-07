@@ -5,8 +5,6 @@ include_once 'header_footer/header.php';
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['delete_from_cart'])){
-            echo "aaa".$_POST['product_id'];
-            echo "AAAAAAAAAAAAAA";
             $deletedProduct = $shoppingCart -> deleteFromShoppingCart($_POST['product_id']);
             print_r($deletedProduct);
         }
@@ -16,7 +14,10 @@ include_once 'header_footer/header.php';
 <!--Begin-->
 <section class="py-2">
     <div class="container">
+        <?php
+        if(count($product->getData('cart'))){ ?>
         <h4>Shopping cart</h4>
+
         <div class="row">
             <div class="col-9">
                 <?php
@@ -85,7 +86,11 @@ include_once 'header_footer/header.php';
                 </div>
             </div>
         </div>
-
+        <?php 
+        }else{
+            echo "<h2 class='text-center  py-5'>Unfortunately, there are no items in the cart.</h2>";
+        }
+        ?>
     </div>
 
 </section>

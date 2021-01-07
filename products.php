@@ -41,10 +41,11 @@
             <?php foreach($products as $item) {
                 ?>
             <div class="grid-item Brand<?php echo $item['productBrand']?? 'A';?> border">
-                <div class="item py-2" style="width:200px">
+                <div class="item py-2 d-flex justify-content-center align-items-center"
+                    style="height:350px; width:250px">
                     <div class="product">
                         <a href="<?php printf('product_info.php?productID=%s', $item['productID']); ?>"><img
-                                class="img-fluid" class="productimg"
+                                class="img-fluid" class="productimg" style="height: 220px; width: 220px;"
                                 src="<?php echo $item['productImage']??images/jacketA.jpg;?>"
                                 alt=<?php echo $item['productName']??'Jacket A';?> srcset=""></a>
                         <div class="text-center">
@@ -58,13 +59,16 @@
                                 <input type="hidden" name="userID" value="<?php echo 1;?>">
 
                                 <?php 
-                                if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
-                                    echo '<button type="submit" disabled name="products_all" class="btn btn-danger mb-3 disabled">Add to cart</button>';
-                                }
-                                else{
-                                    echo '<button type="submit" name="products_all" class="btn btn-primary mb-3">Add to cart</button>';
-                                }   
-                                ?>
+                        if(isset($_SESSION["userID"])){
+                            if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
+                                echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Add to cart</button>';
+                            }
+                            else{
+                                echo '<button type="submit" name="product_featured" class="btn btn-primary mb-3">Add to cart</button>';
+                            }   
+                    }
+                        
+                    ?>
                             </form>
                         </div>
                     </div>

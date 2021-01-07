@@ -17,12 +17,15 @@
     <!-- Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css" class="rel">
+    <link rel="stylesheet" href="style.css" class="rel" <?php echo time(); ?>>
     <?php
 require('includes\functions.inc.php');
     $products = $product->getData();
     ?>
 </head>
+<h3 id="test1">
+    TEXT
+</h3>
 
 <body class="font-roboto">
     <!--Navigation bar -->
@@ -34,6 +37,17 @@ require('includes\functions.inc.php');
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ">
+                    <?php 
+                    if(isset($_SESSION["userID"])){
+                        echo '
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="index.php">
+                                Hello';
+                                echo $_SESSION["userName"];
+                            echo '</a>
+                        </li>';
+    }
+                    ?>
                     <li class="nav-item px-2">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -45,13 +59,12 @@ require('includes\functions.inc.php');
                     <?php
                         if(isset($_SESSION["userID"])){
                             echo '<li class="nav-item px-2"><a class="nav-link" href="shopping_cart.php">Shopping cart <span>' . count($product->getData('cart')) . '</span></a></li>';
-                    echo '<li class="nav-item px-2"><a class="nav-link" href="includes/logout.inc.php">Sign out</a></li>
-                    ';
-                    }
-                    else {
-                    echo '<li class="nav-item px-2"><a class="nav-link" href="signup.php">Sign Up</a></li>';
-                    echo '<li class="nav-item px-2"><a class="nav-link" href="login.php">Login</a> </li>';
-                    }
+                            echo '<li class="nav-item px-2"><a class="nav-link" href="includes/logout.inc.php">Sign out</a></li>';
+                        }
+                        else {
+                            echo '<li class="nav-item px-2"><a class="nav-link" href="signup.php">Sign Up</a></li>';
+                            echo '<li class="nav-item px-2"><a class="nav-link" href="login.php">Login</a> </li>';
+                        }
                     ?>
 
 
