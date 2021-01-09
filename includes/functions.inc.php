@@ -5,9 +5,11 @@ require('ShoppingCart.php');
 
 $db = new DBController();
 $product = new Product($db);
+$fproduct = new Product($db);
+$sproduct = new Product ($db);
 $shoppingCart = new ShoppingCart($db);
 $all_products = $product->getData();
-print_r($shoppingCart->getCartID($product->getData('cart')));
+
 
 
 function emptyInputSignup($name, $email, $username, $password, $password_repeat){
@@ -123,4 +125,17 @@ function loginUser ($conn, $username, $password){
         header("location: ../index.php");
         exit();
     }
+}
+function addSub($email, $conn){
+    $sql = "INSERT INTO subscribers (email) VALUES (?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?statementfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: index.php?noerror");
+    exit();
 }

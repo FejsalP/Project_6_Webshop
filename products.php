@@ -3,13 +3,16 @@
     include_once 'includes/product.php';
     $all_products = $product->getData();
     $brands = array_map(function($product){
-         return $product['productBrand'];},$all_products);
+         return $product['productBrand'];}, $all_products);
     $unique_brands = array_unique($brands);
     sort($unique_brands);
+    $types = array_map(function($product){
+        return $product['productType'];}, $all_products);
+    $unique_types = array_unique($types);
+    sort($unique_types);
     if($_SERVER['REQUEST_METHOD']=='POST'){
-
         if(isset($_POST['products_all'])){
-            $shoppingCart->addToShoppingCart($_POST['userID'], $_POST['productID']);
+            $shoppingCart->addToShoppingCart($_SESSION['userID'], $_POST['productID']);
         }
 }
 ?>
@@ -29,18 +32,19 @@
                 }, $unique_brands)
             ?>
         </div>
-        <div class="sort-button-group text-right" id="sort">
-            <button class="btn btn-default" data-sort-direction="asc" data-sort-value="original-order"
-                type="button">Ascending <span aria-hidden="true"></span></button>
-            <button class="btn btn-default" data-sort-direction="desc" data-sort-value="original-order"
-                type="button">Descending <span aria-hidden="true"></span></button>
-            <button class="btn" data-sort-value="price">Price: Ascending</button>
-            <button class="btn" data-sort-value="price">Price: Descending</button>
+        <div class="button-group text-right" id="filters">
+            <button class="btn is-checked" data-filter="">All Types</button>
+            <?php
+                array_map(function($type){
+                    printf('<button class="btn" data-filter=".Type%s">%s</button>', $type, $type);
+                }, $unique_types)
+            ?>
         </div>
         <div class="grid">
             <?php foreach($products as $item) {
                 ?>
-            <div class="grid-item Brand<?php echo $item['productBrand']?? 'A';?> border">
+            <div
+                class="grid-item Brand<?php echo $item['productBrand']?? 'A';?> border Type<?php echo $item['productType']??'Jacket';?>">
                 <div class="item py-2 d-flex justify-content-center align-items-center"
                     style="height:350px; width:250px">
                     <div class="product">
@@ -60,11 +64,11 @@
 
                                 <?php 
                         if(isset($_SESSION["userID"])){
-                            if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
-                                echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Add to cart</button>';
+                            if (in_array($item['productID'], $shoppingCart->getCartID($product->getDataSelected('cart')) ?? [])){
+                                echo '<button type="submit" disabled name="products_all" class="btn btn-danger mb-3 disabled">Add to cart</button>';
                             }
                             else{
-                                echo '<button type="submit" name="product_featured" class="btn btn-primary mb-3">Add to cart</button>';
+                                echo '<button type="submit" name="products_all" class="btn btn-primary mb-3">Add to cart</button>';
                             }   
                     }
                         

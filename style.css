@@ -80,20 +80,17 @@ button, button:focus {
 }
 /*  top sale template   */
 
-#footer {
-    position: fixed;
-    height: 50px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
-}
+
 .card-img-top {
     max-height: 20vh; /*not want to take all vertical space*/
     object-fit: contain;/*show all image, autosized, no cut, in available space*/
 }
 #test {
   height: 200px;
+}
+a {
+  color: black;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */

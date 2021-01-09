@@ -1,4 +1,4 @@
-<section id="footer" class="py-5 my-5 bg bg-primary">
+<section id="footer" class="py-5 mt-3 bg bg-primary">
     <div class="container border-left border-right">
         <div class="row">
             <div class="col-4">
@@ -6,10 +6,20 @@
                     <li>
                         <h5>Information</h5>
                     </li>
-                    <li>Contact us</li>
-                    <li>About us</li>
-                    <li>Shipping information</li>
-                    <li>Terms and conditions</li>
+                    <li>
+                        <a href="contact_us.php">Contact us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shipping.php">
+                            Shipping information
+                        </a>
+                    </li>
+                    <li>
+                        <a href="terms.php">
+                            Terms and conditions
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="col-5">
@@ -19,23 +29,24 @@
                 <div class="text-center container">
                     <img class="img-fluid" style="height: 70px; width: 70px;" src="images/facebook.png" alt="Facebook"
                         srcset="">
-                    <img class="img-fluid" style="height: 70px; width: 70px;" src="images/instagram.png" </div>
+                    <img class="img-fluid" style="height: 70px; width: 70px;" src="images/instagram.png">
                 </div>
             </div>
+
             <div class="col-3">
                 <div class="row">
                     <h5 class="text-center">
-                        Subscribe to our newslater
+                        Subscribe to our newsletter
                     </h5>
                     <form action="subscribe.php" method="post">
                         <input type="email" name="email" id="email" placeholder="Enter your email here..."
                             class="form-control">
+                        <button type="submit" class="btn btn-primary">Confirm</button>
                     </form>
                 </div>
 
             </div>
         </div>
-    </div>
 
 </section>
 

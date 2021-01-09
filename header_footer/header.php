@@ -19,15 +19,20 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" class="rel" <?php echo time(); ?>>
     <?php
-require('includes\functions.inc.php');
-    $products = $product->getData();
+        require('includes\functions.inc.php');
+        $products = $product->getData();
+        $featured_products = $fproduct->getDataFeatured();
+        $selected_products = $sproduct -> getDataSelected();
+        $message="";
+        echo $message;
     ?>
 </head>
-<h3 id="test1">
-    TEXT
-</h3>
 
 <body class="font-roboto">
+    <!--Bottom navbar -->
+    <nav class="navbar fixed-bottom navbar-light justify-content-center" style="background-color: #e3f2fd">
+        <a class="navbar-brand" href="#">Webshop - Fejsal Perva</a>
+    </nav>
     <!--Navigation bar -->
     <section class="container my-5" id="containerNav">
         <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
@@ -43,7 +48,9 @@ require('includes\functions.inc.php');
                         <li class="nav-item px-2">
                             <a class="nav-link" href="index.php">
                                 Hello';
-                                echo $_SESSION["userName"];
+                               if(!empty($_SESSION['userName'])){
+                                   echo $_SESSION['userName'];}
+                            else{echo $_SESSION['userID'];}//AAAAAAAAAAAAa
                             echo '</a>
                         </li>';
     }
@@ -51,14 +58,11 @@ require('includes\functions.inc.php');
                     <li class="nav-item px-2">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="products.php">
-                            Products
-                        </a>
-                    </li>
+
                     <?php
                         if(isset($_SESSION["userID"])){
-                            echo '<li class="nav-item px-2"><a class="nav-link" href="shopping_cart.php">Shopping cart <span>' . count($product->getData('cart')) . '</span></a></li>';
+                            echo '<li class="nav-item px-2"><a class="nav-link" href="products.php">Products</a></li>';
+                            echo '<li class="nav-item px-2"><a class="nav-link" href="shopping_cart.php">Shopping cart <span>' . count($product->getDataSelected('cart')) . '</span></a></li>';
                             echo '<li class="nav-item px-2"><a class="nav-link" href="includes/logout.inc.php">Sign out</a></li>';
                         }
                         else {

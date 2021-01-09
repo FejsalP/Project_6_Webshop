@@ -6,7 +6,7 @@
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['product_featured'])){
-         $shoppingCart->addToShoppingCart($_POST['userID'], $_POST['productID']);
+         $shoppingCart->addToShoppingCart($_SESSION['userID'], $_POST['productID']);
     }}
 ?>
 <link rel="stylesheet" href="style.css" class="rel">
@@ -15,8 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <div class="container text-center">
         <div class="row justify-content-center">
             <?php
-                //$featured_products = $product->getData();
-                foreach($products as $item){ 
+                foreach($featured_products as $item){ 
             ?>
             <div class="card m-2" style="width: 18rem;">
                 <a href="<?php printf('product_info.php?productID=%s', $item['productID']); ?>">
@@ -36,7 +35,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
                     <?php 
                         if(isset($_SESSION["userID"])){
-                            if (in_array($item['productID'], $shoppingCart->getCartID($product->getData('cart')) ?? [])){
+                            if (in_array($item['productID'], $shoppingCart->getCartID($product->getDataSelected('cart')) ?? [])){
                                 echo '<button type="submit" disabled name="product_featured" class="btn btn-danger mb-3 disabled">Add to cart</button>';
                             }
                             else{

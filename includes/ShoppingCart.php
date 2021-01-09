@@ -16,9 +16,7 @@ public function insertIntoShoppingCart($params=null, $table='cart'){
     if($this->db->conn!=null){
         if($params !=null){
             $columns = implode(',', array_keys($params));
-            print_r($columns);
             $values = implode(',', array_values($params));
-            print_r($values);
 
             //query
             $query = sprintf("INSERT INTO %s(%s) VALUES(%s)", $table, $columns, $values);
@@ -44,7 +42,6 @@ public function addToShoppingCart($userID, $productID){
 }
 
 public function deleteFromShoppingCart($productID=null, $table='cart'){
-    echo $productID;
     if($productID != null){
         $result=$this->db->conn->query("DELETE FROM {$table} WHERE productID={$productID};");
         if($result){

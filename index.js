@@ -36,7 +36,6 @@ $(document).ready(function(){
     var $input = $(`.quantity-input[data-id='${$(this).data("id")}']`);
     var $price = $(`.price[data-id='${$(this).data("id")}']`);
     $.ajax({url: "includes/ajax.php", type : 'post', data : { productID : $(this).data("id")}, success:function(result){  
-        console.log(result)
         result = result.slice(7)
         var obj = JSON.parse(result);
         var productPrice = obj[0]['productPrice'];

@@ -6,7 +6,6 @@ include_once 'header_footer/header.php';
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['delete_from_cart'])){
             $deletedProduct = $shoppingCart -> deleteFromShoppingCart($_POST['product_id']);
-            print_r($deletedProduct);
         }
     }
 ?>
@@ -15,16 +14,17 @@ include_once 'header_footer/header.php';
 <section class="py-2">
     <div class="container">
         <?php
-        if(count($product->getData('cart'))){ ?>
+        if(count($product->getDataSelected('cart'))){ ?>
         <h4>Shopping cart</h4>
 
         <div class="row">
             <div class="col-9">
                 <?php
-            foreach ($product->getData('cart') as $item):
+            foreach ($product->getDataSelected('cart') as $item):
                 $cart = $product->getProduct($item['productID']);
                 $subTotal[] = array_map(function($item){
-
+                    global $message;
+                    $currentMessage ="";
             ?>
                 <div class="row border-top py-3">
                     <div class="col-sm-3">
@@ -61,9 +61,10 @@ include_once 'header_footer/header.php';
                     </div>
 
                 </div>
-                <?php                 
+                <?php       
+                $message = $message."Product: ".$item['productName']."<br>Brand: ".$item['productBrand']."<br>Price: ".$item['productPrice']."KM<br><br>";
                 return $item['productPrice'];
-
+                
             },$cart); //end of arraymap
                 endforeach;
             ?>
@@ -74,6 +75,8 @@ include_once 'header_footer/header.php';
                 <div class="sub-total text-center">
                     <h6>
                         Total delivery
+                        <?php 
+                        ?>
                     </h6>
                     <div class="py-3 border">
                         <h5>
@@ -81,7 +84,9 @@ include_once 'header_footer/header.php';
                                 id="total_price"><?php echo isset($subTotal) ? $shoppingCart->findTotal($subTotal):0;?></span>
                             KM
                         </h5>
-                        <button class="btn btn-primary">Buy</button>
+                        <form action="order.php" method="post"> <button class="btn btn-primary"
+                                type="submit">Buy</button>
+                        </form>
                     </div>
                 </div>
             </div>

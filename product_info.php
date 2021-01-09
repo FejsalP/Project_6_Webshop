@@ -14,8 +14,8 @@
     <div class="row">
         <div class="col-sm-5 pb-5">
             <div>
-                <img class="img-fluid" src="<?php echo $item['productImage']??'images/jacketA.jpg';?>" alt="Product"
-                    srcset="">
+                <img class="img-fluid" style="width: 450px; height: 450px;"
+                    src="<?php echo $item['productImage']??'images/jacketA.jpg';?>" alt="Product" srcset="">
 
             </div>
         </div>
@@ -52,19 +52,7 @@
                     </div>
                 </div>
                 <div class="col-8">
-                    <div class="quantity d-flex">
-                        <div class="px-4 d-flex">
-                            <div class="quantity d-flex">
-                                <h5>Quantity: </h5>
-                                <div class="px-4 d-flex">
-                                    <input type="text" value="1" disabled data-id="product1"
-                                        class="px-1 w-50 border bg-light quantity-input">
-                                    <button data-id="product1" class="quantity-up border bg-light">+</button>
-                                    <button data-id="product1" class="quantity-down border bg-light">-</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
 
